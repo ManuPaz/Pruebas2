@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mockito;
@@ -28,10 +29,22 @@ class testGestionMenusImpl {
 
 	@BeforeEach
 	void setUp() throws Exception {
-	datos=Mockito.mock(GestionDatosImpl.class);
+		
+		datos=Mockito.mock(GestionDatosImpl.class);
 		
 		// Inyectamos en las clases anotadas sus clases simuladas
 		MockitoAnnotations.initMocks(this);
+		
+		
+	}
+
+	@AfterEach
+	void tearDown() throws Exception {
+	}
+
+	@DisplayName("CP01: Test construir menu, con 3 platos correctos de cada, un dia correcto y bebidas existentes")
+	@Test
+	void testConstruirMenuCorrecto() {
 		dia="Lunes";
 		Plato plato=new Plato("primero","Macarrones con queso");
 		primeros.add(plato);
@@ -56,20 +69,10 @@ class testGestionMenusImpl {
 		bebida=new Bebida("Coca cola");
 		bebidas.add(bebida);
 		
-	}
-
-	@AfterEach
-	void tearDown() throws Exception {
-	}
-
-	@Test
-	void testConstruirMenuCorrecto() {
-		
-		
-		
 		gM.construirMenu(dia, primeros, segundos, postres, bebidas);
 		
-		
 	}
+	
+	
 
 }
