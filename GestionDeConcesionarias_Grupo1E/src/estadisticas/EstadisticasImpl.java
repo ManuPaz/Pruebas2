@@ -119,7 +119,7 @@ public class EstadisticasImpl implements IEstadisticas{
 		else return null;
 	}
 	
-	private Plato platoMasSolicitado(HashMap<Plato,Integer> mapa) {
+	public Plato platoMasSolicitado(HashMap<Plato,Integer> mapa) {
 		int maximo=0;//numero de solicitudes maximo, se inicializa a un valor bajo
 		Plato masSolicitado=null;
 		
