@@ -30,19 +30,19 @@ public class Main {
 			
 			while(condicionDeParada != true) {
 				////////////////////////////////////////////////
-				//Generamos las estadísticas actualizadas
+				//Generamos las estadï¿½sticas actualizadas
 				Estadisticas estadisticas = gestionEstadisticas.generarEstadisticas(gestionDeDatos.recopilarDatosEstadisticas());
 				////////////////////////////////////////////////
 				System.out.println("Introduzca una de las opciones: ");
-				System.out.println("a) Ver Menú del día");
+				System.out.println("a) Ver Menï¿½ del dï¿½a");
 				System.out.println("b) Seleccionar Platos");
 				System.out.println("c) Ver Platos mejor valorado");
 				System.out.println("d) Ver platos peor Valorado");
-				System.out.println("e) Ver platos más seleccionado");
+				System.out.println("e) Ver platos mï¿½s seleccionado");
 				System.out.println("f) Ver platos menos seleccionado");
 				System.out.println("g) Consultar grado de ocupacion");
 				System.out.println("--------------------------------------");
-				System.out.println("k) Crear Menú.");
+				System.out.println("k) Crear Menï¿½.");
 				System.out.println("---------------------------------------");
 				System.out.println("j) Devolver Bandeja");
 				System.out.println("----------------------------------------");
@@ -70,7 +70,7 @@ public class Main {
 						System.out.println("Selecciona una bebida:");
 						String bebida = escaner.nextLine();
 						
-						Bandeja bandejaNueva = new Bandeja(new Plato(primerPlato,"primero"), new Plato(segundoPlato,"segundo"), new Plato(postre, "postre"), new Bebida(bebida));
+						Bandeja bandejaNueva = new Bandeja(new Plato("primero",primerPlato), new Plato("segundo",segundoPlato), new Plato("postre",postre), new Bebida(bebida));
 						String codigoBandeja = gestionSensores.generarCodigoBandeja();
 						bandejaNueva.setId(codigoBandeja);
 						listadoDeBandejas.put(codigoBandeja, bandejaNueva);
@@ -93,7 +93,7 @@ public class Main {
 						System.out.println("\t Postre-> " + estadisticas.getPostrePeorValorado().getNombre());
 						break;
 					case "e":
-						System.out.println("Los platos más solicitados son: ");
+						System.out.println("Los platos mï¿½s solicitados son: ");
 						System.out.println("\t Primero-> " + estadisticas.getPrimeroMasSolicitado().getNombre());
 						System.out.println("\t Segundo-> " + estadisticas.getSegundoMasSolicitado().getNombre());
 						System.out.println("\t Postre-> " + estadisticas.getPostreMasSolicitado().getNombre());
@@ -112,7 +112,7 @@ public class Main {
 						
 						break;
 					case "j":
-						System.out.println("Introduce el código de tu bandeja.");
+						System.out.println("Introduce el cï¿½digo de tu bandeja.");
 						String codigo = escaner.nextLine();
 						
 						//simularia el pasar la bandeja por el lector

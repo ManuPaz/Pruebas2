@@ -36,13 +36,13 @@ class testGestionMenusImpl {
 		dia="Lunes";
 		Plato plato=new Plato("primero","Macarrones con queso");
 		primeros.add(plato);
-		plato=new Plato("primero","Atún con queso");
+		plato=new Plato("primero","Atï¿½n con queso");
 		primeros.add(plato);
-		plato=new Plato("primero","Sopa fría");
+		plato=new Plato("primero","Sopa frï¿½a");
 		primeros.add(plato);
 		plato=new Plato("segundo","Pollo asado");
 		segundos.add(plato);
-		plato=new Plato("segundo","Judías");
+		plato=new Plato("segundo","Judï¿½as");
 		segundos.add(plato);
 		plato=new Plato("segundo","Patatas fritas");
 		segundos.add(plato);
@@ -50,7 +50,7 @@ class testGestionMenusImpl {
 		postres.add(plato);
 		plato=new Plato("postre","helado de fresa");
 		postres.add(plato);
-		plato=new Plato("postre","flan de café");
+		plato=new Plato("postre","flan de cafï¿½");
 		postres.add(plato);
 		Bebida bebida=new Bebida("agua");
 		bebidas.add(bebida);
@@ -79,13 +79,13 @@ class testGestionMenusImpl {
 		Mockito.verify(datos, Mockito.times(0)).almacenarMenu(Mockito.any()); //No se debe invocar porque es incorrecto
 	}
 	
-	@DisplayName("CP03: Test construir menu, con platos que no son del tipo que deberían ser")
+	@DisplayName("CP03: Test construir menu, con platos que no son del tipo que deberï¿½an ser")
 	@Test
 	void testConstruirMenuPlatosErroneos() {
 		primeros.clear();
 		Plato plato=new Plato("primero","Macarrones con queso");
 		primeros.add(plato);
-		plato=new Plato("primero","Atún con queso");
+		plato=new Plato("primero","Atï¿½n con queso");
 		primeros.add(plato);
 		plato=new Plato("primero","Pollo asado");
 		primeros.add(plato);
@@ -93,20 +93,20 @@ class testGestionMenusImpl {
 		Mockito.verify(datos, Mockito.times(0)).almacenarMenu(Mockito.any()); //No se debe invocar porque es incorrecto
 	}
 	
-	@DisplayName("CP04: Test construir menu, con una lista de bebidas vacía y una lista con dos platos segundos")
+	@DisplayName("CP04: Test construir menu, con una lista de bebidas vacï¿½a y una lista con dos platos segundos")
 	@Test
 	void testConstruirMenuSinBebidas() {
 		bebidas.clear();
 		segundos.clear();
 		Plato plato=new Plato("segundo","Pollo asado");
 		segundos.add(plato);
-		plato=new Plato("segundo","Judías");
+		plato=new Plato("segundo","Judï¿½as");
 		segundos.add(plato);
 		gM.construirMenu(dia, primeros, segundos, postres, bebidas);
 		Mockito.verify(datos, Mockito.times(0)).almacenarMenu(Mockito.any()); //No se debe invocar porque es incorrecto
 	}
 	
-	@DisplayName("CP05: Test construir menu, con un día que no existe y platos repetidos")
+	@DisplayName("CP05: Test construir menu, con un dï¿½a que no existe y platos repetidos")
 	@Test
 	void testConstruirMenuDiaMalRepeticiones() {
 		bebidas.clear();

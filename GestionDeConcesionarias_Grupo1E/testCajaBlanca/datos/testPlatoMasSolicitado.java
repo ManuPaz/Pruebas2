@@ -49,12 +49,12 @@ public class testPlatoMasSolicitado {
 	void testSolicitadoCP36() {
 		//caso de integer 0
 		plato=new Plato("postre","helado de fresa");
-		platos.put(plato,0);
+		platos.put(plato,1);
 		
 		
-		//debe devolver un plato distinto
+		//debe devolver un plato distinto (ya que se supone que hay uno en el sistema con mas puntuacion)
 		assertNotEquals(plato.getNombre(),est.platoMasSolicitado(platos).getNombre(),"El plato devuelto debe distinto.");
-		assertNotEquals(plato.getTipo(),est.platoMasSolicitado(platos).getTipo(),"El plato devuelto debe ser distinto.");
+		assertNotEquals(plato.getTipo(),est.platoMasSolicitado(platos).getTipo(),"El plato devuelto debe ser del mismo tipo.");
 
 	}
 	
@@ -71,7 +71,7 @@ public class testPlatoMasSolicitado {
 		
 		//debe devolver el propio plato
 		assertEquals(plato.getNombre(),est.platoMasSolicitado(platos).getNombre(),"El plato devuelto debe ser el mismo.");
-		assertEquals(plato.getTipo(),est.platoMasSolicitado(platos).getTipo(),"El plato devuelto debe ser el mismo.");
+		assertEquals(plato.getTipo(),est.platoMasSolicitado(platos).getTipo(),"El plato devuelto debe ser del mismo tipo.");
 	}
 	
 	@DisplayName("P11_CP38")
@@ -83,12 +83,12 @@ public class testPlatoMasSolicitado {
 		//caso de 2 valoraciones
 		plato=new Plato("postre","helado de fresa");
 		platos.put(plato,10);
-		plato=new Plato("postre","Flan de café");
-		platos.put(plato,7);
+		Plato plato2=new Plato("postre","Flan de café");
+		platos.put(plato2,7);
 		
 		//debe devolver el primer plato del array
-		assertEquals(plato.getNombre(),est.platoMasSolicitado(platos).getNombre(),"El plato devuelto debe ser el primero del array.");
-		assertEquals(plato.getTipo(),est.platoMasSolicitado(platos).getTipo(),"El plato devuelto debe ser el primero del array.");
+		assertEquals(plato.getNombre(),est.platoMasSolicitado(platos).getNombre(),"El plato devuelto debe ser el de puntuación más alta.");
+		assertEquals(plato.getTipo(),est.platoMasSolicitado(platos).getTipo(),"El plato devuelto debe ser del mismo tipo.");
 	}
 
 }
