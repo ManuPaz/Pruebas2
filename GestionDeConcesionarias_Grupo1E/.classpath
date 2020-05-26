@@ -10,6 +10,7 @@
 	<classpathentry kind="src" path="testUnidad"/>
 	<classpathentry kind="src" path="testIntegracion"/>
 	<classpathentry kind="src" path="testAceptacion"/>
+	<classpathentry kind="src" path="testCajaBlanca"/>
 	<classpathentry kind="lib" path="src/json-20190722.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Manuel/git/repository/GestionDeConcesionarias_Grupo1E/mockito-all-1.10.19.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
