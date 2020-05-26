@@ -61,7 +61,7 @@ class testGestionDatosImpl {
 	}
 
 	@Test
-	void test() {
+	void testAlmacenarMenuCorrecto() {
 		JSONObject objMenus = null,objPlatos = null;
 		try {
 			String content = new String(Files.readAllBytes(Paths.get("./src/menu.json")));
