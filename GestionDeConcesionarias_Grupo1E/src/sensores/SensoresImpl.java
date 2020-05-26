@@ -36,7 +36,6 @@ public class SensoresImpl implements ISensores{
 		
 		this.generadorDeVales++;
 		this.valesGenerados.add(valeGenerado);
-		System.out.println("Tu vale es: " + valeGenerado);
 		
 		return valeGenerado;
 	}

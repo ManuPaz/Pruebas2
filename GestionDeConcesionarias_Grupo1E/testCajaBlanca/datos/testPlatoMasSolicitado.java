@@ -35,7 +35,6 @@ public class testPlatoMasSolicitado {
 	@Tag("PlatoMasSolicitado")
 	@Tag("CajaBlanca")
 	@Test
-	
 	void testSolicitadoCP35() {
 		//caso de hashmap nulo
 		//el plato tiene que ser nulo
