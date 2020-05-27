@@ -33,13 +33,13 @@ class testMenuDatos {
 		dia = "Lunes";
 		Plato plato = new Plato("primero", "Macarrones con queso");
 		primeros.add(plato);
-		plato = new Plato("primero", "Atún con queso");
+		plato = new Plato("primero", "Atï¿½n con queso");
 		primeros.add(plato);
-		plato = new Plato("primero", "Sopa fría");
+		plato = new Plato("primero", "Sopa frï¿½a");
 		primeros.add(plato);
 		plato = new Plato("segundo", "Pollo asado");
 		segundos.add(plato);
-		plato = new Plato("segundo", "Judías");
+		plato = new Plato("segundo", "Judï¿½as");
 		segundos.add(plato);
 		plato = new Plato("segundo", "Patatas fritas");
 		segundos.add(plato);
@@ -47,7 +47,7 @@ class testMenuDatos {
 		postres.add(plato);
 		plato = new Plato("postre", "helado de fresa");
 		postres.add(plato);
-		plato = new Plato("postre", "flan de café");
+		plato = new Plato("postre", "flan de cafï¿½");
 		postres.add(plato);
 		Bebida bebida = new Bebida("agua");
 		bebidas.add(bebida);
@@ -86,7 +86,7 @@ class testMenuDatos {
 		menusArr = objMenus.getJSONArray("menu");
 		int y;
 		y = menusArr.length() - 1;
-		assertEquals(1, y - x); //Vemos si aumentó el contenido del fichero de menus
+		assertEquals(1, y - x); //Vemos si aumentï¿½ el contenido del fichero de menus
 	}
 	
 	@DisplayName("CP22: Test integracion: sin bebidas.")
@@ -117,7 +117,7 @@ class testMenuDatos {
 		menusArr = objMenus.getJSONArray("menu");
 		int y;
 		y = menusArr.length() - 1;
-		assertEquals(1, y - x); //Vemos si aumentó el contenido del fichero de menus
+		assertNotEquals(1, y - x); //Vemos que no aumentï¿½ el contenido del fichero de menus
 	}
 	
 	@DisplayName("CP23: Test integracion: dia no laborable.")
@@ -148,7 +148,7 @@ class testMenuDatos {
 		menusArr = objMenus.getJSONArray("menu");
 		int y;
 		y = menusArr.length() - 1;
-		assertEquals(1, y - x); //Vemos si aumentó el contenido del fichero de menus
+		assertNotEquals(1, y - x); //Vemos que no aumentï¿½ el contenido del fichero de menus
 	}
 	
 	@DisplayName("CP24: Test integracion: con dos segundos solo.")
@@ -180,7 +180,7 @@ class testMenuDatos {
 		menusArr = objMenus.getJSONArray("menu");
 		int y;
 		y = menusArr.length() - 1;
-		assertEquals(1, y - x); //Vemos si aumentó el contenido del fichero de menus
+		assertNotEquals(1, y - x); //Vemos que no aumentï¿½ el contenido del fichero de menus
 	}
 	
 	@DisplayName("CP25: Test integracion: con un dia inexistente.")
@@ -213,7 +213,7 @@ class testMenuDatos {
 		menusArr = objMenus.getJSONArray("menu");
 		int y;
 		y = menusArr.length() - 1;
-		assertEquals(1, y - x); //Vemos si aumentó el contenido del fichero de menus
+		assertNotEquals(1, y - x); //Vemos que no aumentï¿½ el contenido del fichero de menus
 	}
 
 }

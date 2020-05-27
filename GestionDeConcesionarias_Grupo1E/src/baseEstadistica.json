@@ -1,8 +1,1 @@
-{"baseEstadistica":[{
-		"valoracionesPlatos":[{"plato":"Pollo asado","nota":3}],
-		"horaDevolucion":"14:00",
-		"horaAsignacion":"13:30",
-		"dia":"16/04/2020",
-		"ID_Bandeja": 842573968
-		
-	}]}
+{"baseEstadistica":[{"horaDevolucion":"14:00","horaAsignacion":"13:30","valoracionesPlatos":[{"plato":"Pollo asado","nota":3}],"dia":"16/04/2020","ID_Bandeja":842573968},{"plato":"sopa fria","nota":5},{"plato":"patatas fritas","nota":2},{"plato":"croquetas","nota":3},{"plato":"patatas fritas","nota":2},{"plato":"croquetas","nota":3},{"plato":"sopa fria","nota":-2},{"plato":"patatas fritas","nota":2},{"plato":"sopa fria","nota":-2},{"plato":"croquetas","nota":3},{"plato":"patatas fritas","nota":2},{"plato":"sopa fria","nota":5},{"plato":"croquetas","nota":3},{"plato":"croquetas","nota":3},{"plato":"sopa fria","nota":-2},{"plato":"patatas fritas","nota":2},{"plato":"patatas fritas","nota":2},{"plato":"sopa fria","nota":5},{"plato":"croquetas","nota":3},{"plato":"sopa fria","nota":-2},{"plato":"patatas fritas","nota":2},{"plato":"croquetas","nota":3},{"plato":"patatas fritas","nota":2},{"plato":"sopa fria","nota":5},{"plato":"croquetas","nota":3},{"plato":"sopa fria","nota":-2},{"plato":"patatas fritas","nota":2},{"plato":"croquetas","nota":3}]}
