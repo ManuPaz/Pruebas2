@@ -1,6 +1,5 @@
 package seleccionMenus;
 
-import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -12,7 +11,6 @@ import datos.Bandeja;
 import datos.Bebida;
 import datos.Plato;
 import gestionDatos.GestionDatosImpl;
-import gestionMenus.GestionMenusImpl;
 import sensores.SensoresImpl;
 
 class testSeleccionMenusImpl {
@@ -23,14 +21,16 @@ class testSeleccionMenusImpl {
 	Bebida bebida;
 	Bandeja bandeja;
 	GestionDatosImpl gD;
+	SensoresImpl sensores;
 	@InjectMocks
 	SeleccionMenusImpl sM;
 
 	@BeforeEach
 	void setUp() throws Exception{
 		
-		sM=Mockito.mock(SeleccionMenusImpl.class);
-		gD=new GestionDatosImpl();
+		gD=Mockito.mock(GestionDatosImpl.class);
+		sensores=new SensoresImpl();
+		sM=new SeleccionMenusImpl(sensores);
 		
 		// Inyectamos en las clases anotadas sus clases simuladas
 		MockitoAnnotations.initMocks(this);
@@ -51,7 +51,9 @@ class testSeleccionMenusImpl {
 		Plato postre=new Plato("postre", "natillas fresa");
 		Bebida bebida=new Bebida("agua");
 	
-		Mockito.verify(sM, Mockito.times(1)).seleccionarMenu(primero,segundo,postre,bebida);		
+		sM.seleccionarMenu(primero, segundo, postre, bebida);
+		//se almacena el menu pq la seleccion es valida
+		Mockito.verify(gD, Mockito.times(1)).almacenarMenu(Mockito.any());	
 		
 	}
 	
@@ -64,8 +66,9 @@ class testSeleccionMenusImpl {
 		Plato postre=new Plato("postre", "natillas chocolate");
 		Bebida bebida=new Bebida("agua");
 		
+		sM.seleccionarMenu(primero, segundo, postre, bebida);
 		//no se deberia invocar pq el tipo es incorrecto
-		Mockito.verify(sM, Mockito.times(0)).seleccionarMenu(primero,segundo,postre,bebida);
+		Mockito.verify(gD, Mockito.times(0)).almacenarMenu(Mockito.any());	
 		
 	}
 	
@@ -78,9 +81,9 @@ class testSeleccionMenusImpl {
 		Plato postre=new Plato("postre", "croquetas");
 		Bebida bebida=new Bebida("agua");
 		
+		sM.seleccionarMenu(primero, segundo, postre, bebida);
 		//no se deberia invocar pq el tipo es incorrecto
-		Mockito.verify(sM, Mockito.times(0)).seleccionarMenu(primero,segundo,postre,bebida);
-		
+		Mockito.verify(gD, Mockito.times(0)).almacenarMenu(Mockito.any());			
 		
 	}
 	
@@ -94,9 +97,9 @@ class testSeleccionMenusImpl {
 		Plato postre=new Plato("segundo", "Pollo asado");
 		Bebida bebida=new Bebida("agua");
 		
+		sM.seleccionarMenu(primero, segundo, postre, bebida);
 		//no se deberia invocar pq el tipo es incorrecto
-		Mockito.verify(sM, Mockito.times(0)).seleccionarMenu(primero,segundo,postre,bebida);
-	}
+		Mockito.verify(gD, Mockito.times(0)).almacenarMenu(Mockito.any());		}
 	
 	@DisplayName("CP12: Test seleccionarMenu: la bebida no es válida.")
 	@Test
@@ -107,9 +110,9 @@ class testSeleccionMenusImpl {
 		Plato postre=new Plato("postre", "helado de fresa");
 		Bebida bebida=new Bebida("alcohol");
 		
+		sM.seleccionarMenu(primero, segundo, postre, bebida);
 		//no se deberia invocar pq la bebida es incorrecta
-		Mockito.verify(sM, Mockito.times(0)).seleccionarMenu(primero,segundo,postre,bebida);
-		
+		Mockito.verify(gD, Mockito.times(0)).almacenarMenu(Mockito.any());			
 	}
 	
 	@DisplayName("CP13: Test seleccionarMenu: platos del tipo correcto pero nombre inexistente.")
@@ -120,9 +123,9 @@ class testSeleccionMenusImpl {
 		Plato segundo=new Plato("segundo", "ewrgferg");
 		Plato postre=new Plato("postre", "fewgrreg");
 		
+		sM.seleccionarMenu(primero, segundo, postre, bebida);
 		//no se deberia invocar pq el nombre del plato es incorrecto
-		Mockito.verify(sM, Mockito.times(0)).seleccionarMenu(primero,segundo,postre,bebida);
-		
+		Mockito.verify(gD, Mockito.times(0)).almacenarMenu(Mockito.any());			
 	}
 
 }
