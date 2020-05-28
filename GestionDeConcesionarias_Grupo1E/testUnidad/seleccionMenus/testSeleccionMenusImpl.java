@@ -80,7 +80,7 @@ class testSeleccionMenusImpl {
 		Bebida bebida=new Bebida("agua");
 		
 		sM.seleccionarMenu(primero, segundo, postre, bebida);
-		//no se deberia invocar pq el tipo es incorrecto
+		//no se deberia crear la bandeja pq el tipo es incorrecto
 		Mockito.verify(sensores, Mockito.times(0)).generarCodigoBandeja();			
 		
 	}
@@ -96,7 +96,7 @@ class testSeleccionMenusImpl {
 		Bebida bebida=new Bebida("agua");
 		
 		sM.seleccionarMenu(primero, segundo, postre, bebida);
-		//no se deberia invocar pq el tipo es incorrecto
+		//no se deberia crear la bandeja pq el tipo es incorrecto
 		Mockito.verify(sensores, Mockito.times(0)).generarCodigoBandeja();
 	}
 	
@@ -110,7 +110,7 @@ class testSeleccionMenusImpl {
 		Bebida bebida=new Bebida("alcohol");
 		
 		sM.seleccionarMenu(primero, segundo, postre, bebida);
-		//no se deberia invocar pq la bebida es incorrecta
+		//no se deberia crear la bandeja pq la bebida es incorrecta
 		Mockito.verify(sensores, Mockito.times(0)).generarCodigoBandeja();			
 	}
 	
@@ -123,7 +123,7 @@ class testSeleccionMenusImpl {
 		Plato postre=new Plato("postre", "fewgrreg");
 		
 		sM.seleccionarMenu(primero, segundo, postre, bebida);
-		//no se deberia invocar pq el nombre del plato es incorrecto
+		//no se deberia crear la bandeja pq los nombre de los plato son incorrectos
 		Mockito.verify(sensores, Mockito.times(0)).generarCodigoBandeja();			
 	}
 
