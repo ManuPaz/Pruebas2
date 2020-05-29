@@ -2,6 +2,8 @@ package pagosCualificaciones;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 
 import org.junit.jupiter.api.AfterEach;
@@ -13,7 +15,9 @@ import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
 import datos.Bandeja;
+import datos.BaseEstadisticas;
 import datos.Bebida;
+import datos.Estadisticas;
 import datos.Plato;
 import gestionDatos.GestionDatosImpl;
 import sensores.SensoresImpl;
@@ -29,8 +33,10 @@ class testPagosCualificacionesImpl {
 	@BeforeEach
 	void setUp() throws Exception {
 		conexionManipuladorDeDatos=Mockito.mock(GestionDatosImpl.class);
-		MockitoAnnotations.initMocks(this);
 		sensores=new SensoresImpl();
+		gPC=new PagosCualificacionesImpl(sensores);
+		MockitoAnnotations.initMocks(this);
+		
 		String codigoBandeja = sensores.generarCodigoBandeja();
 		String codigoVale = sensores.generarCodigoVale();	
 		plato = new Plato("primero", "Macarrones con queso");
@@ -49,7 +55,6 @@ class testPagosCualificacionesImpl {
 	void testGuardarValoracionesLimiteInferior() {
 		HashMap<Plato,Integer> valoraciones = new HashMap<>();
 		valoraciones.put(plato, 0);
-		
 		gPC.guardarValoracion(bandeja, valoraciones);
 		Mockito.verify(conexionManipuladorDeDatos, Mockito.times(1)).almacenarValoracion(Mockito.any()); //Se debe invocar a almacenarMenu porque es un menu correcto
 	}
@@ -59,7 +64,9 @@ class testPagosCualificacionesImpl {
 	void testGuardarValoracionesLimiteSuperior() {
 		HashMap<Plato,Integer> valoraciones = new HashMap<>();
 		valoraciones.put(plato, 5);
-		Mockito.when(conexionManipuladorDeDatos.almacenarValoracion(Mockito.any())).thenReturn(Integer.valueOf(5));
+
+
+		
 		gPC.guardarValoracion(bandeja, valoraciones);
 		Mockito.verify(conexionManipuladorDeDatos, Mockito.times(1)).almacenarValoracion(Mockito.any()); //Se debe invocar a almacenarMenu porque es un menu correcto
 	}
@@ -70,18 +77,24 @@ class testPagosCualificacionesImpl {
 	void testGuardarValoracionesInferior() {
 		HashMap<Plato,Integer> valoraciones = new HashMap<>();
 		valoraciones.put(plato, -1);
-		
+
 		gPC.guardarValoracion(bandeja, valoraciones);
-		Mockito.verify(conexionManipuladorDeDatos, Mockito.times(1)).almacenarValoracion(Mockito.any()); //Se debe invocar a almacenarMenu porque es un menu correcto
+		Mockito.verify(conexionManipuladorDeDatos, Mockito.times(0)).almacenarValoracion(Mockito.any()); //Se debe invocar a almacenarMenu porque es un menu correcto
 	}
 	
-	@DisplayName("CP15: Test no guardar valoracion")
+	@DisplayName("CP18: Test no guardar valoracion")
 	@Test
 	void testGuardarValoracionesSuperior() {
 		HashMap<Plato,Integer> valoraciones = new HashMap<>();
 		valoraciones.put(plato, 6);
-		
+	
 		gPC.guardarValoracion(bandeja, valoraciones);
-		Mockito.verify(conexionManipuladorDeDatos, Mockito.times(1)).almacenarValoracion(Mockito.any()); //Se debe invocar a almacenarMenu porque es un menu correcto
+		Mockito.verify(conexionManipuladorDeDatos, Mockito.times(0)).almacenarValoracion(Mockito.any()); 
+	}
+	@DisplayName("P04_CP14")
+	@Test
+	void testPagarMenu() {
+		Bandeja bandejaSalida = gPC.pagarMenu(bandeja);
+		assertEquals(bandeja.getId(),bandejaSalida.getId(),"El id de las bandejas debería ser el mismo.");
 	}
 }
