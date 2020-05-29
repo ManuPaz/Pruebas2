@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mockito;
@@ -62,7 +63,9 @@ class testGestionMenusImpl {
 	@AfterEach
 	void tearDown() throws Exception {
 	}
-
+	@Nested
+	@DisplayName("Prueba 1: Prueba del metodo construirMenu")
+	class P{
 	@DisplayName("CP01: Test construir menu, con 3 platos correctos de cada, un dia correcto y bebidas existentes")
 	@Test
 	void testConstruirMenuCorrecto() {
@@ -120,5 +123,5 @@ class testGestionMenusImpl {
 		gM.construirMenu(dia, primeros, segundos, postres, bebidas);
 		Mockito.verify(datos, Mockito.times(0)).almacenarMenu(Mockito.any()); //No se debe invocar porque es incorrecto
 	}
-
+	}
 }

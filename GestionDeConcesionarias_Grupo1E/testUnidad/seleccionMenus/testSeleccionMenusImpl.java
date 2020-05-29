@@ -43,8 +43,8 @@ class testSeleccionMenusImpl {
 	}
 	
 	@Nested
-	@DisplayName("Pruebas con datos correctos")
-	class MenusCorrectos{
+	@DisplayName("Prueba 3: Prueba del método seleccionarMenu")
+	class Menus{
 		@DisplayName("CP08: Test seleccionarMenu: todos los platos son del menu del dia.")
 		@Test
 		void testSeleccionarMenuCorrecto() {
@@ -59,11 +59,9 @@ class testSeleccionMenusImpl {
 			Mockito.verify(sensores, Mockito.times(1)).generarCodigoBandeja();	
 			
 		}
-	}
 	
-	@Nested
-	@DisplayName("Pruebas con datos incorrectos")
-	class MenusIncorrectos{
+	
+	
 	
 		@DisplayName("CP09: Test seleccionarMenu: el primero introducido no es un primero.")
 		@Test

@@ -11,9 +11,11 @@ import org.json.JSONObject;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import codigoPrincipal.IGestionDatos;
+import gestionDatos.GestionDatosImpl;
 import gestionMenus.GestionMenusImpl;
 
 class testGestionMenuDatos {
@@ -54,6 +56,7 @@ class testGestionMenuDatos {
 	
 	@BeforeEach
 	void setUp() throws Exception {
+		datos=new GestionDatosImpl();
 		gM = new GestionMenusImpl(datos);
 		Plato plato = new Plato("primero", "Macarrones con queso");
 		primeros1.add(plato);
@@ -188,7 +191,9 @@ class testGestionMenuDatos {
 		bebida = new Bebida("agua con gas");
 		bebidas6.add(bebida);
 	}
-
+	@Nested
+	@DisplayName("	Prueba 9: Prueba de aceptación de los métodos construir menú y almacenar menú")
+	class P{
 	
 	@DisplayName("P09_CP28")
 	@Test
@@ -213,8 +218,8 @@ class testGestionMenuDatos {
 		gM.construirMenu(dia,primeros4, segundos4, postres4, bebidas4);
 		dia = "Viernes";
 		gM.construirMenu(dia,primeros5, segundos5, postres5, bebidas5);
-		dia = "Lunes";
-		gM.construirMenu(dia,primeros6, segundos6, postres6, bebidas6);
+		
+		
 		try {
 			String content = new String(Files.readAllBytes(Paths.get("./src/menu.json")));
 			objMenus = new JSONObject(content);
@@ -259,7 +264,8 @@ class testGestionMenuDatos {
 		}
 		menusArr = objMenus.getJSONArray("menu");
 		lineasDespues = menusArr.length() - 1;
-		assertEquals(6, lineasDespues - lineasAntes);
+		assertEquals(5, lineasDespues - lineasAntes);
+	}
 	}
 
 }

@@ -11,6 +11,7 @@ import org.json.JSONObject;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import pagosCualificaciones.PagosCualificacionesImpl;
@@ -45,7 +46,9 @@ class testGuardarAlmacenarValoracion {
 	@AfterEach
 	void tearDown() throws Exception {
 	}
-
+	@Nested
+	@DisplayName("Prueba 8: Prueba de integración de los métodos guardarValoracion y almacenarValoracion")
+	class P{
 	@DisplayName("CP26: Test integracion: se permite valorar los platos y se escribe la puntuaciÃ³n en el archivo.")
 	@Test
 	void testRealizarValoracion() {
@@ -109,4 +112,4 @@ class testGuardarAlmacenarValoracion {
 		assertNotEquals(3, y - x); //Vemos que no aumenta el contenido del array de platos
 	}
 
-}
+}}

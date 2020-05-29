@@ -9,6 +9,7 @@ import java.util.HashMap;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mockito;
@@ -37,8 +38,8 @@ class testPagosCualificacionesImpl {
 		gPC=new PagosCualificacionesImpl(sensores);
 		MockitoAnnotations.initMocks(this);
 		
-		String codigoBandeja = sensores.generarCodigoBandeja();
-		String codigoVale = sensores.generarCodigoVale();	
+		String codigoBandeja ="10";
+		String codigoVale ="1";	
 		plato = new Plato("primero", "Macarrones con queso");
 		bandeja = new Bandeja(codigoBandeja, codigoVale, new Plato("primero", "Macarrones con queso"), new Plato("segundo", "Pollo asado"), new Plato("postre", "flan de huevo"), new Bebida("agua"));
 	}
@@ -48,8 +49,9 @@ class testPagosCualificacionesImpl {
 	}
 
 	
-
-	
+@Nested
+@DisplayName("Prueba 5: Prueba del metodo guardarValoracion")
+	class P{
 	@DisplayName("CP15: Test guardar valoracion")
 	@Test
 	void testGuardarValoracionesLimiteInferior() {
@@ -91,10 +93,19 @@ class testPagosCualificacionesImpl {
 		gPC.guardarValoracion(bandeja, valoraciones);
 		Mockito.verify(conexionManipuladorDeDatos, Mockito.times(0)).almacenarValoracion(Mockito.any()); 
 	}
-	@DisplayName("P04_CP14")
+}
+	@Nested
+	@DisplayName("Prueba 4: Prueba del método pagarMenu")
+	class P1{
+	@DisplayName("CP14")
 	@Test
 	void testPagarMenu() {
-		Bandeja bandejaSalida = gPC.pagarMenu(bandeja);
+		PagosCualificacionesImpl gP1;
+		SensoresImpl sensores1=new SensoresImpl();
+		gP1=new PagosCualificacionesImpl(sensores1);
+		
+		Bandeja bandejaSalida = gP1.pagarMenu(bandeja);
 		assertEquals(bandeja.getId(),bandejaSalida.getId(),"El id de las bandejas debería ser el mismo.");
+	}
 	}
 }

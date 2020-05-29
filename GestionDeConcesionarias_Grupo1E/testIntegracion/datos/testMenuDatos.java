@@ -11,6 +11,7 @@ import org.json.JSONObject;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 
@@ -58,7 +59,9 @@ class testMenuDatos {
 	@AfterEach
 	void tearDown() throws Exception {
 	}
-
+	@Nested
+	@DisplayName("Prueba 7: Prueba de integración de los métodos construirMenu y almacenarMenu")
+	class P{
 	@DisplayName("CP21: Test integracion: se crea y se escribe un menu en el archivo.")
 	@Test
 	void testAlmacenarMenuConstruido() {
@@ -214,6 +217,7 @@ class testMenuDatos {
 		int y;
 		y = menusArr.length() - 1;
 		assertNotEquals(1, y - x); //Vemos que no aumentï¿½ el contenido del fichero de menus
+	}
 	}
 
 }

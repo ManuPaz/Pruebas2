@@ -34,7 +34,7 @@ public class PagosCualificacionesImpl implements IPagosCualificaciones{
 		
 		if(this.conexionSensor.canjearVale(valeAux)) {
 			Bandeja bandejaDelUsuario = new Bandeja(this.conexionSensor.generarCodigoBandeja(), this.conexionSensor.generarCodigoVale(), bandeja.getPrimeroSeleccionado(), bandeja.getSegundoSeleccionado(), bandeja.getPostreSeleccionado(), bandeja.getBebidaSeleccionada());
-			
+			System.out.println(bandejaDelUsuario.getId());
 			//Introducimos la bandeja en el historial para poder tener cuenta de las que estamos entregando a los usuarios, y realizar las comprobaciones necesarias cuando estas son devueltas
 			this.historialDeBandejas.put(bandejaDelUsuario.getId(), bandejaDelUsuario);
 			
