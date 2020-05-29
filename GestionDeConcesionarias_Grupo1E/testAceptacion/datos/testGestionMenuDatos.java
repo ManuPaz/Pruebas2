@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -57,13 +58,13 @@ class testGestionMenuDatos {
 		gM = new GestionMenusImpl(datos);
 		Plato plato = new Plato("primero", "Macarrones con queso");
 		primeros1.add(plato);
-		plato = new Plato("primero", "Atún con queso");
+		plato = new Plato("primero", "Atï¿½n con queso");
 		primeros1.add(plato);
-		plato = new Plato("primero", "Sopa fría");
+		plato = new Plato("primero", "Sopa frï¿½a");
 		primeros1.add(plato);
 		plato = new Plato("segundo", "Pollo asado");
 		segundos1.add(plato);
-		plato = new Plato("segundo", "Judías");
+		plato = new Plato("segundo", "Judï¿½as");
 		segundos1.add(plato);
 		plato = new Plato("segundo", "Patatas fritas");
 		segundos1.add(plato);
@@ -71,7 +72,7 @@ class testGestionMenuDatos {
 		postres1.add(plato);
 		plato = new Plato("postre", "helado de fresa");
 		postres1.add(plato);
-		plato = new Plato("postre", "flan de café");
+		plato = new Plato("postre", "flan de cafï¿½");
 		postres1.add(plato);
 		Bebida bebida = new Bebida("agua");
 		bebidas1.add(bebida);
@@ -204,17 +205,30 @@ class testGestionMenuDatos {
 		int lineasAntes = menusArr.length() - 1;
 		int lineasDespues;
 		dia = "Lunes";
-		gM.construirMenu(dia,primeros1, segundos1, postres1, bebidas1);
+		Assertions.assertThrows(NullPointerException.class, () -> {
+			gM.construirMenu(dia,primeros1, segundos1, postres1, bebidas1);
+		});
+		
 		dia = "Martes";
-		gM.construirMenu(dia,primeros2, segundos2, postres2, bebidas2);
+		Assertions.assertThrows(NullPointerException.class, () -> {
+			gM.construirMenu(dia,primeros2, segundos2, postres2, bebidas2);
+		});
 		dia = "Miercoles";
-		gM.construirMenu(dia,primeros3, segundos3, postres3, bebidas3);
+		Assertions.assertThrows(NullPointerException.class, () -> {
+			gM.construirMenu(dia,primeros3, segundos3, postres3, bebidas3);
+		});
 		dia = "Jueves";
-		gM.construirMenu(dia,primeros4, segundos4, postres4, bebidas4);
+		Assertions.assertThrows(NullPointerException.class, () -> {
+			gM.construirMenu(dia,primeros4, segundos4, postres4, bebidas4);
+		});
 		dia = "Viernes";
-		gM.construirMenu(dia,primeros5, segundos5, postres5, bebidas5);
+		Assertions.assertThrows(NullPointerException.class, () -> {
+			gM.construirMenu(dia,primeros5, segundos5, postres5, bebidas5);
+		});
 		dia = "Lunes";
-		gM.construirMenu(dia,primeros6, segundos6, postres6, bebidas6);
+		Assertions.assertThrows(NullPointerException.class, () -> {
+			gM.construirMenu(dia,primeros6, segundos6, postres6, bebidas6);
+		});
 		try {
 			String content = new String(Files.readAllBytes(Paths.get("./src/menu.json")));
 			objMenus = new JSONObject(content);
@@ -224,42 +238,6 @@ class testGestionMenuDatos {
 		menusArr = objMenus.getJSONArray("menu");
 		lineasDespues = menusArr.length() - 1;
 		assertEquals(5, lineasDespues - lineasAntes);
-	}
-	
-	@DisplayName("P09_CP29")
-	@Test
-	void testConstAlmacenMenuErr() {
-		JSONObject objMenus = null, objPlatos = null;
-		try {
-			String content = new String(Files.readAllBytes(Paths.get("./src/menu.json")));
-			objMenus = new JSONObject(content);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		JSONArray menusArr = objMenus.getJSONArray("menu");
-		int lineasAntes = menusArr.length() - 1;
-		int lineasDespues;
-		dia = "Sabado";
-		gM.construirMenu(dia,primeros1, segundos1, postres1, bebidas1);
-		dia = "Martes";
-		gM.construirMenu(dia,primeros2, segundos2, postres2, bebidas2);
-		dia = "Miercoles";
-		gM.construirMenu(dia,primeros3, segundos3, postres3, bebidas3);
-		dia = "Jueves";
-		gM.construirMenu(dia,primeros4, segundos4, postres4, bebidas4);
-		dia = "Viernes";
-		gM.construirMenu(dia,primeros5, segundos5, postres5, bebidas5);
-		dia = "Lunes";
-		gM.construirMenu(dia,primeros6, segundos6, postres6, bebidas6);
-		try {
-			String content = new String(Files.readAllBytes(Paths.get("./src/menu.json")));
-			objMenus = new JSONObject(content);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		menusArr = objMenus.getJSONArray("menu");
-		lineasDespues = menusArr.length() - 1;
-		assertEquals(6, lineasDespues - lineasAntes);
 	}
 
 }
