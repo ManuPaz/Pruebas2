@@ -210,25 +210,30 @@ class testGestionMenuDatos {
 		});
 		
 		dia = "Martes";
-		Assertions.assertThrows(NullPointerException.class, () -> {
+		Assertions.assertDoesNotThrow(() -> {
 			gM.construirMenu(dia,primeros2, segundos2, postres2, bebidas2);
-		});
+		}, "Null Pointer Exception recibido, no se puede realizar la prueba");
+		
 		dia = "Miercoles";
-		Assertions.assertThrows(NullPointerException.class, () -> {
+		Assertions.assertDoesNotThrow(() -> {
 			gM.construirMenu(dia,primeros3, segundos3, postres3, bebidas3);
-		});
+		}, "Null Pointer Exception recibido, no se puede realizar la prueba");
+		
 		dia = "Jueves";
-		Assertions.assertThrows(NullPointerException.class, () -> {
+		Assertions.assertDoesNotThrow(() -> {
 			gM.construirMenu(dia,primeros4, segundos4, postres4, bebidas4);
-		});
+		}, "Null Pointer Exception recibido, no se puede realizar la prueba");
+		
 		dia = "Viernes";
-		Assertions.assertThrows(NullPointerException.class, () -> {
+		Assertions.assertDoesNotThrow(() -> {
 			gM.construirMenu(dia,primeros5, segundos5, postres5, bebidas5);
-		});
+		}, "Null Pointer Exception recibido, no se puede realizar la prueba");
+		
 		dia = "Lunes";
-		Assertions.assertThrows(NullPointerException.class, () -> {
+		Assertions.assertDoesNotThrow(() -> {
 			gM.construirMenu(dia,primeros6, segundos6, postres6, bebidas6);
-		});
+		}, "Null Pointer Exception recibido, no se puede realizar la prueba");
+		
 		try {
 			String content = new String(Files.readAllBytes(Paths.get("./src/menu.json")));
 			objMenus = new JSONObject(content);
