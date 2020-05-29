@@ -19,10 +19,16 @@ class testEstadisticasImpl {
 	Estadisticas result;
 	SensoresImpl sensores = new SensoresImpl();
 	EstadisticasImpl est = new EstadisticasImpl(sensores);
+	Plato plato11, plato21, resultado;
 	
 	@BeforeEach
 	void setUp() throws Exception {
-		
+		  plato11 = new Plato ("postre", "Flan de cafe");
+		    float nota1 = (float) 3.5;
+		    plato11.setNotaMedia(nota1);
+		    plato21 = new Plato ("postre", "Helado de fresa");
+		    float nota2 = (float) 2.7;
+		    plato21.setNotaMedia(nota2);
 		
 		String codigoBandeja = sensores.generarCodigoBandeja();
 		String codigoVale = sensores.generarCodigoVale();
@@ -109,4 +115,42 @@ class testEstadisticasImpl {
 		assertEquals("flan de café", result.getPostreMasSolicitado().getNombre(),"El postre más solicitado debe ser flan de huevo y de café.");
 		
 	}
+
+	//Casos de prueba
+	@DisplayName("P12_CP39")
+		@Test
+		void testMejorCP39() {
+			Plato aComparar = null;
+			Plato maxActual = plato11;
+			
+			
+			resultado = est.compararPlatoMejorValorado(aComparar, maxActual);
+			assertEquals(null, resultado,"El resultado es nulo porque el plato a comparar es nulo.");
+			
+		}
+		
+		@DisplayName("P12_CP40")
+		@Test
+		void testMejorCP40() {
+			Plato aComparar = plato11;
+			Plato maxActual = plato21;
+			
+			
+			resultado = est.compararPlatoMejorValorado(aComparar, maxActual);
+			assertEquals(plato11, resultado,"Se ha actualizado un nuevo plato cuya nota media es mayor que el registrado con anterioridad.");
+			
+		}
+		
+		@DisplayName("P12_CP41")
+		@Test
+		void testMejorCP41() {
+			Plato aComparar = plato21;
+			Plato maxActual = plato11;
+			
+			
+			resultado = est.compararPlatoMejorValorado(aComparar, maxActual);
+			assertEquals(plato11, resultado, "Se devuelve el plato con nota media mayor, el ya registrado con anterioridad.");
+			
+		}
 }
+

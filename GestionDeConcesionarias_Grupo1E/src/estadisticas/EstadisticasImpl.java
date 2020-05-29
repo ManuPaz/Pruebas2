@@ -103,7 +103,7 @@ public class EstadisticasImpl implements IEstadisticas{
 
 	
 	//metodos privados que facilitan el trabajo del metodo principal
-	private Plato compararPlatoMejorValorado(Plato aComparar, Plato maxActual) {
+	public Plato compararPlatoMejorValorado(Plato aComparar, Plato maxActual) {
 		if((aComparar!=null)&&(maxActual!=null))//por si alguno de los valores es nulo
 			if(aComparar.getNotaMedia() > maxActual.getNotaMedia())
 				return aComparar;

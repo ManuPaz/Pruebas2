@@ -4,21 +4,16 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import datos.Plato;
+
 class testEstadisticasImpl {
+	//Cambiar en Estadisticas el metodo a public
 
-	@BeforeEach
-	void setUp() throws Exception {
-	}
-
-	@AfterEach
-	void tearDown() throws Exception {
-	}
-
-	@Test
-	void test() {
-		fail("Not yet implemented");
-	}
+	//Atributos
+	Plato plato11, plato21, resultado;
+	EstadisticasImpl est;
 
 }
