@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -60,13 +61,13 @@ class testGestionMenuDatos {
 		gM = new GestionMenusImpl(datos);
 		Plato plato = new Plato("primero", "Macarrones con queso");
 		primeros1.add(plato);
-		plato = new Plato("primero", "Atún con queso");
+		plato = new Plato("primero", "Atï¿½n con queso");
 		primeros1.add(plato);
-		plato = new Plato("primero", "Sopa fría");
+		plato = new Plato("primero", "Sopa frï¿½a");
 		primeros1.add(plato);
 		plato = new Plato("segundo", "Pollo asado");
 		segundos1.add(plato);
-		plato = new Plato("segundo", "Judías");
+		plato = new Plato("segundo", "Judï¿½as");
 		segundos1.add(plato);
 		plato = new Plato("segundo", "Patatas fritas");
 		segundos1.add(plato);
@@ -74,7 +75,7 @@ class testGestionMenuDatos {
 		postres1.add(plato);
 		plato = new Plato("postre", "helado de fresa");
 		postres1.add(plato);
-		plato = new Plato("postre", "flan de café");
+		plato = new Plato("postre", "flan de cafï¿½");
 		postres1.add(plato);
 		Bebida bebida = new Bebida("agua");
 		bebidas1.add(bebida);
@@ -208,7 +209,8 @@ class testGestionMenuDatos {
 		JSONArray menusArr = objMenus.getJSONArray("menu");
 		int lineasAntes = menusArr.length() - 1;
 		int lineasDespues;
-		dia = "Lunes";
+		
+		dia = "Sabado";
 		gM.construirMenu(dia,primeros1, segundos1, postres1, bebidas1);
 		dia = "Martes";
 		gM.construirMenu(dia,primeros2, segundos2, postres2, bebidas2);
@@ -218,6 +220,7 @@ class testGestionMenuDatos {
 		gM.construirMenu(dia,primeros4, segundos4, postres4, bebidas4);
 		dia = "Viernes";
 		gM.construirMenu(dia,primeros5, segundos5, postres5, bebidas5);
+		
 		
 		
 		try {
@@ -230,6 +233,7 @@ class testGestionMenuDatos {
 		lineasDespues = menusArr.length() - 1;
 		assertEquals(5, lineasDespues - lineasAntes);
 	}
+
 	
 	@DisplayName("P09_CP29")
 	@Test
