@@ -30,7 +30,7 @@ public Bandeja(String id, String idVale, Plato primeroSeleccionado, Plato segund
 	this.bebidaSeleccionada = bebidaSeleccionada;
 	Date date = new Date();   // given date
 	Calendar calendar = GregorianCalendar.getInstance(); // creates a new calendar instance
-	calendar.setTime(date);   // assigns calendar to given date 
+	calendar.setTime(date);
 	//cuando se crea la bandeja se le asigna la hora de asignacion y el dia actual
 	this.estadisticas=new BaseEstadisticas(new Date().toString().substring(11, 20),new SimpleDateFormat("dd/MM/yyyy").format(new Date()));
 	
